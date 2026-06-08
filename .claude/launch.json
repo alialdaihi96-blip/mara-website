@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mara-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "4800", "/Users/aldaihi/Desktop/Mara"],
+      "port": 4800
+    }
+  ]
+}

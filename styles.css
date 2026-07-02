@@ -945,17 +945,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin: 0 auto 3.5rem;
 }
 
-.editorial__grid {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 6px;
+/* Gliding film-strip marquee — the track holds two identical sets of cells
+   and slides -50%, so the loop is seamless. Pauses on hover. */
+.editorial__marquee {
+  overflow: hidden;
+  margin: 0 -3rem;
+  padding: 1.5rem 0;
+}
+
+.editorial__track {
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+  animation: editorial-glide 55s linear infinite;
+}
+.editorial__marquee:hover .editorial__track { animation-play-state: paused; }
+
+@keyframes editorial-glide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .editorial__cell {
-  padding-bottom: 100%;
   position: relative;
+  height: 380px;
+  width: 300px;
+  flex-shrink: 0;
+  margin-right: 6px;
   overflow: hidden;
   cursor: pointer;
   background: var(--black);
@@ -963,12 +979,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .editorial__cell:hover { transform: scale(1.02); z-index: 1; }
 
+/* Alternating drop gives the strip its editorial rhythm */
+.editorial__cell:nth-child(even) { margin-top: 2rem; }
+
 .editorial__cell--1 { background: url('images/product-1-front.jpeg') center top / cover no-repeat; }
-.editorial__cell--2 { background: url('images/hero-campaign.jpeg') center 20% / cover no-repeat; padding-bottom: 200%; grid-row: span 2; }
-.editorial__cell--3 { background: url('images/detail-label.jpeg') center center / cover no-repeat; }
+.editorial__cell--2 { background: url('images/hero-campaign.jpeg') center 20% / cover no-repeat; width: 460px; }
+.editorial__cell--3 { background: url('images/detail-label.jpeg') center center / cover no-repeat; width: 380px; }
 .editorial__cell--4 { background: url('images/product-2-front.jpeg') center top / cover no-repeat; }
-.editorial__cell--5 { background: url('images/product-1-back.jpeg') center top / cover no-repeat; padding-bottom: 200%; grid-row: span 2; }
+.editorial__cell--5 { background: url('images/product-1-back.jpeg') center top / cover no-repeat; width: 460px; }
 .editorial__cell--6 { background: url('images/product-3-front.jpeg') center top / cover no-repeat; }
+.editorial__cell--7 { background: url('images/abaya-autumn-detail.jpg') center 15% / cover no-repeat; width: 380px; }
+.editorial__cell--8 { background: url('images/rosalie-detail.jpg') center 60% / cover no-repeat; width: 380px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial__track { animation: none; }
+  .editorial__marquee { overflow-x: auto; }
+}
 
 /* Turquoise accent on hover */
 .editorial__cell::after {
@@ -1595,9 +1621,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     gap: 2.5rem;
   }
 
-  .editorial__grid { grid-template-columns: repeat(3, 1fr); }
-  .editorial__cell--2 { padding-bottom: 100%; grid-row: span 1; }
-  .editorial__cell--5 { padding-bottom: 100%; grid-row: span 1; }
+  .editorial__marquee { margin: 0 -1.5rem; }
+  .editorial__cell { height: 300px; width: 240px; }
+  .editorial__cell--2, .editorial__cell--5 { width: 360px; }
+  .editorial__cell--3, .editorial__cell--7, .editorial__cell--8 { width: 300px; }
 
   .footer__top {
     grid-template-columns: 1fr;
@@ -1616,9 +1643,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .pillars__inner { grid-template-columns: 1fr; gap: 2rem; }
 
-  .editorial__grid { grid-template-columns: repeat(2, 1fr); }
-  .editorial__cell--2 { grid-row: span 1; }
-  .editorial__cell--5 { grid-row: span 1; }
+  .editorial__cell { height: 240px; width: 190px; }
+  .editorial__cell--2, .editorial__cell--5 { width: 290px; }
+  .editorial__cell--3, .editorial__cell--7, .editorial__cell--8 { width: 240px; }
+  .editorial__cell:nth-child(even) { margin-top: 1.25rem; }
 
   .footer__nav { grid-template-columns: 1fr 1fr; }
 

@@ -2,6 +2,82 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ── Render collection grid from catalogue, filtered by category tabs ── */
+  const grid = document.getElementById('collectionsGrid');
+  const tabsWrap = document.getElementById('collectionsTabs');
+
+  const bindProductCards = () => {
+    grid.querySelectorAll('.product-card[data-id]').forEach(card => {
+      const go = () => { window.location.href = `product.html?id=${card.dataset.id}`; };
+      card.addEventListener('click', go);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
+    });
+  };
+
+  const renderGrid = (categoryId) => {
+    const category = (typeof MARA_CATEGORIES !== 'undefined' &&
+      MARA_CATEGORIES.find(c => c.id === categoryId)) || null;
+
+    if (category?.comingSoon) {
+      grid.classList.add('collections__grid--empty');
+      grid.innerHTML = `
+        <div class="collections__empty">
+          <p class="collections__empty-line">${category.label} — coming soon.</p>
+          <p class="collections__empty-sub">Crafted for timeless presence — arriving soon.</p>
+        </div>`;
+      return;
+    }
+
+    const items = MARA_PRODUCTS.filter(p => !categoryId || p.category === categoryId);
+    if (!items.length) {
+      grid.classList.add('collections__grid--empty');
+      grid.innerHTML = `
+        <div class="collections__empty">
+          <p class="collections__empty-line">The new collection is being prepared.</p>
+          <p class="collections__empty-sub">Crafted for timeless presence — arriving soon.</p>
+        </div>`;
+      return;
+    }
+
+    grid.classList.remove('collections__grid--empty');
+    grid.innerHTML = items.map((p, i) => `
+      <div class="product-card reveal visible" data-id="${p.id}" role="link" tabindex="0"
+           aria-label="View ${p.name}" style="--delay: ${i * 80}ms">
+        <div class="product-card__image" style="background-image:url('${p.images[0]}')">
+          <div class="product-card__overlay"><span>View Piece</span></div>
+          <div class="product-card__accent-line"></div>
+        </div>
+        <div class="product-card__info">
+          <h3 class="product-card__name">${p.name}</h3>
+          <p class="product-card__desc">${p.tagline}</p>
+          <span class="product-card__price">${p.price}</span>
+        </div>
+      </div>`).join('');
+    bindProductCards();
+  };
+
+  if (grid && typeof MARA_PRODUCTS !== 'undefined') {
+    if (tabsWrap && typeof MARA_CATEGORIES !== 'undefined') {
+      tabsWrap.innerHTML = MARA_CATEGORIES.map((c, i) => `
+        <button class="collections__tab${i === 0 ? ' is-active' : ''}" data-category="${c.id}">
+          ${c.label}${c.comingSoon ? '<span class="collections__tab-soon">Soon</span>' : ''}
+        </button>`).join('');
+      tabsWrap.querySelectorAll('.collections__tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabsWrap.querySelectorAll('.collections__tab').forEach(t => t.classList.remove('is-active'));
+          tab.classList.add('is-active');
+          renderGrid(tab.dataset.category);
+        });
+      });
+      renderGrid(MARA_CATEGORIES[0].id);
+    } else {
+      renderGrid(null);
+    }
+  }
+
+
   /* ── Scroll-aware nav ────────────────────────────────────────────────── */
   const nav = document.getElementById('nav');
   let lastScrollY = 0;
@@ -92,20 +168,63 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+  /* ── Floating WhatsApp button (all pages) ────────────────────────────── */
+  if (typeof maraWhatsappLink === 'function') {
+    const wa = document.createElement('a');
+    wa.className = 'wa-float';
+    wa.href = maraWhatsappLink('Hello MARA, I have a question.');
+    wa.target = '_blank';
+    wa.rel = 'noopener';
+    wa.setAttribute('aria-label', 'Contact MARA on WhatsApp');
+    wa.innerHTML = `
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2a10 10 0 00-8.6 15l-1.4 5 5.1-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.4.4 0 000-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 00-.7.3 2.8 2.8 0 00-.9 2.1 4.9 4.9 0 001 2.6 11.2 11.2 0 004.3 3.8c.6.3 1.1.4 1.5.5a3.5 3.5 0 001.6.1 2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.2c0-.1-.2-.2-.4-.3z"/>
+      </svg>`;
+    document.body.appendChild(wa);
+  }
+
+  /* Footer "Contact" → WhatsApp */
+  document.getElementById('footerContact')?.addEventListener('click', e => {
+    if (typeof maraWhatsappLink !== 'function') return;
+    e.preventDefault();
+    window.open(maraWhatsappLink('Hello MARA, I have a question.'), '_blank', 'noopener');
+  });
+
+
   /* ── Newsletter form ─────────────────────────────────────────────────── */
   const form = document.querySelector('.newsletter__form');
-  form?.addEventListener('submit', e => {
+  form?.addEventListener('submit', async e => {
     e.preventDefault();
     const input = form.querySelector('.newsletter__input');
     const btn   = form.querySelector('.newsletter__btn');
     if (!input.value) return;
 
-    btn.textContent = 'Thank you.';
-    btn.style.background = 'var(--turquoise)';
-    input.value = '';
-    input.placeholder = 'You are on the list.';
-    input.disabled = true;
-    btn.disabled = true;
+    const endpoint = (typeof MARA_CONFIG !== 'undefined' && MARA_CONFIG.newsletterEndpoint) || '';
+    const finish = (label) => {
+      btn.textContent = label;
+      btn.style.background = 'var(--turquoise)';
+      input.value = '';
+      input.placeholder = 'You are on the list.';
+      input.disabled = true;
+      btn.disabled = true;
+    };
+
+    if (endpoint) {
+      btn.textContent = '…';
+      try {
+        await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: input.value }),
+        });
+        finish('Thank you.');
+      } catch (err) {
+        btn.textContent = 'Try again';
+      }
+    } else {
+      // No backend configured — graceful confirmation.
+      finish('Thank you.');
+    }
   });
 
 

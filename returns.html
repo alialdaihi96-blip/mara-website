@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARA — Returns & Exchanges</title>
+  <meta name="description" content="MARA returns and exchanges policy — how to return or exchange your abaya." />
+  <link rel="icon" href="images/logo-mark.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="index.html#collections" class="nav__link">Collections</a>
+        <a href="index.html#craft" class="nav__link">Craft</a>
+      </div>
+      <a href="index.html" class="nav__logo" aria-label="MARA Home">
+        <span class="nav__logo-primary">MARA</span>
+        <span class="nav__logo-sub">By maram</span>
+      </a>
+      <div class="nav__right">
+        <a href="index.html#about" class="nav__link">About</a>
+        <button class="nav__menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">✕</button>
+    <nav class="mobile-menu__nav">
+      <a href="index.html#collections" class="mobile-menu__link">Collections</a>
+      <a href="index.html#craft" class="mobile-menu__link">Craft</a>
+      <a href="index.html#about" class="mobile-menu__link">About</a>
+      <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+    </nav>
+    <p class="mobile-menu__tagline">Crafted for timeless presence.</p>
+  </div>
+
+  <main class="info-page">
+    <div class="info-page__inner">
+      <a href="index.html#collections" class="pdp__back">← Collection</a>
+      <span class="section-label">Our Promise</span>
+      <h1 class="info-page__title">Returns &amp; Exchanges</h1>
+      <p class="info-page__lead">
+        We want you to love your MARA piece. If something isn’t right, we’ll make it right.
+      </p>
+
+      <div class="info-list">
+        <div class="info-list__item">
+          <span class="info-list__num">01</span>
+          <div>
+            <h3 class="info-list__title">14-day window</h3>
+            <p class="info-list__text">Request a return or exchange within 14 days of delivery. Pieces must be unworn, unwashed, and with original tags attached.</p>
+          </div>
+        </div>
+        <div class="info-list__item">
+          <span class="info-list__num">02</span>
+          <div>
+            <h3 class="info-list__title">Exchanges first</h3>
+            <p class="info-list__text">Wrong size or length? We’ll prioritise an exchange so you keep the piece you love in the right fit, subject to availability.</p>
+          </div>
+        </div>
+        <div class="info-list__item">
+          <span class="info-list__num">03</span>
+          <div>
+            <h3 class="info-list__title">Made-to-measure &amp; final sale</h3>
+            <p class="info-list__text">Custom and made-to-measure pieces are final sale. We confirm every detail with you on WhatsApp before production.</p>
+          </div>
+        </div>
+        <div class="info-list__item">
+          <span class="info-list__num">04</span>
+          <div>
+            <h3 class="info-list__title">How to start</h3>
+            <p class="info-list__text">Message us on WhatsApp with your order details and we’ll arrange collection and your refund or exchange.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="info-page__note">Start a return or exchange in one message.</p>
+      <a href="#" class="btn btn--dark" id="infoWhatsapp">Start a return</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="border-top:none;">
+      <p class="footer__copy">© 2026 MARA. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="index.html" class="footer__legal-link">Home</a>
+        <a href="size-guide.html" class="footer__legal-link">Size Guide</a>
+        <a href="care.html" class="footer__legal-link">Care</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    document.getElementById('infoWhatsapp')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(maraWhatsappLink('Hello MARA, I’d like to start a return or exchange.'), '_blank', 'noopener');
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

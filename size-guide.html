@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARA — Size Guide</title>
+  <meta name="description" content="MARA abaya size guide — measurements and fit guidance for every piece." />
+  <link rel="icon" href="images/logo-mark.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="index.html#collections" class="nav__link">Collections</a>
+        <a href="index.html#craft" class="nav__link">Craft</a>
+      </div>
+      <a href="index.html" class="nav__logo" aria-label="MARA Home">
+        <span class="nav__logo-primary">MARA</span>
+        <span class="nav__logo-sub">By maram</span>
+      </a>
+      <div class="nav__right">
+        <a href="index.html#about" class="nav__link">About</a>
+        <button class="nav__menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">✕</button>
+    <nav class="mobile-menu__nav">
+      <a href="index.html#collections" class="mobile-menu__link">Collections</a>
+      <a href="index.html#craft" class="mobile-menu__link">Craft</a>
+      <a href="index.html#about" class="mobile-menu__link">About</a>
+      <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+    </nav>
+    <p class="mobile-menu__tagline">Crafted for timeless presence.</p>
+  </div>
+
+  <main class="info-page">
+    <div class="info-page__inner">
+      <a href="index.html#collections" class="pdp__back">← Collection</a>
+      <span class="section-label">Fit & Measurements</span>
+      <h1 class="info-page__title">Size Guide</h1>
+      <p class="info-page__lead">
+        MARA abayas are sized two ways — by <strong>length</strong> (50–60, measured
+        from shoulder to hem) and by <strong>width</strong> (XS–XL). Choose the length
+        for the intended drape, and the width from the measurements below.
+      </p>
+
+      <h2 class="section-label" style="margin-bottom:1rem;">Width · XS–XL</h2>
+      <img
+        src="images/size-guide-chart.jpg"
+        alt="MARA size guide — bust, waist, hip and shoulder measurements for sizes XS to XL"
+        style="width:100%; height:auto; display:block; margin-bottom:2.5rem;"
+      />
+
+      <h2 class="section-label" style="margin-bottom:1rem;">Length · 50–60</h2>
+      <p class="info-page__lead" style="margin-bottom:1.5rem;">
+        Lengths run from 50 to 60, measured from shoulder to hem. As a guide: petite
+        heights suit 50–53, average heights 54–57, and taller heights 58–60.
+      </p>
+
+      <p class="info-page__note">
+        Between two sizes, or after made-to-measure? Every MARA piece can be
+        <strong>customised to your size</strong> — message us on WhatsApp and we’ll
+        take your measurements personally.
+      </p>
+      <a href="#" class="btn btn--dark" id="infoWhatsapp">Ask about sizing</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom" style="border-top:none;">
+      <p class="footer__copy">© 2026 MARA. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="index.html" class="footer__legal-link">Home</a>
+        <a href="care.html" class="footer__legal-link">Care</a>
+        <a href="returns.html" class="footer__legal-link">Returns</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    document.getElementById('infoWhatsapp')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(maraWhatsappLink('Hello MARA, I have a question about sizing.'), '_blank', 'noopener');
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

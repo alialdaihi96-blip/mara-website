@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARA — Piece</title>
+  <meta name="description" content="A MARA piece — luxury contemporary abaya, crafted for timeless presence." />
+  <link rel="icon" href="images/logo-mark.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────────────── -->
+  <nav class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="index.html#collections" class="nav__link">Collections</a>
+        <a href="index.html#craft" class="nav__link">Craft</a>
+      </div>
+
+      <a href="index.html" class="nav__logo" aria-label="MARA Home">
+        <span class="nav__logo-primary">MARA</span>
+        <span class="nav__logo-sub">By maram</span>
+      </a>
+
+      <div class="nav__right">
+        <a href="index.html#about" class="nav__link">About</a>
+        <button class="nav__menu-toggle" id="menuToggle" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">✕</button>
+    <nav class="mobile-menu__nav">
+      <a href="index.html#collections" class="mobile-menu__link">Collections</a>
+      <a href="index.html#craft" class="mobile-menu__link">Craft</a>
+      <a href="index.html#about" class="mobile-menu__link">About</a>
+      <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+    </nav>
+    <p class="mobile-menu__tagline">Crafted for timeless presence.</p>
+  </div>
+
+  <main class="pdp" id="pdp">
+    <!-- Populated by product.js from products.js -->
+    <div class="pdp__loading">Loading piece…</div>
+  </main>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__bottom" style="border-top:none;">
+      <p class="footer__copy">© 2026 MARA. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="index.html" class="footer__legal-link">Home</a>
+        <a href="size-guide.html" class="footer__legal-link">Size Guide</a>
+        <a href="care.html" class="footer__legal-link">Care</a>
+        <a href="returns.html" class="footer__legal-link">Returns</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="products.js"></script>
+  <script src="product.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

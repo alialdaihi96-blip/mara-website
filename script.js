@@ -114,6 +114,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ── Editorial marquee — every product, gliding film-strip ───────────── */
+  const editorialTrack = document.getElementById('editorialTrack');
+  if (editorialTrack && typeof MARA_PRODUCTS !== 'undefined' && MARA_PRODUCTS.length) {
+    // Alternate cells "drop" for editorial rhythm. The same set is rendered
+    // twice (real + aria-hidden duplicate) so the -50% glide loops seamlessly.
+    const cell = (p, i, dup) => `
+      <div class="editorial__cell${i % 2 ? ' is-dropped' : ''}"
+           style="background-image:url('${p.images[0]}')"
+           data-id="${p.id}"
+           ${dup ? 'aria-hidden="true" tabindex="-1"' : 'role="link" tabindex="0"'}
+           aria-label="View ${p.name}">
+        <span class="editorial__cell-name">${p.name}</span>
+      </div>`;
+    const build = (dup) => MARA_PRODUCTS.map((p, i) => cell(p, i, dup)).join('');
+    editorialTrack.innerHTML = build(false) + build(true);
+
+    editorialTrack.querySelectorAll('.editorial__cell[data-id]').forEach(c => {
+      const go = () => { window.location.href = `product.html?id=${c.dataset.id}`; };
+      c.addEventListener('click', go);
+      c.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
+    });
+  }
+
+
   /* ── Scroll-aware nav ────────────────────────────────────────────────── */
   const nav = document.getElementById('nav');
   let lastScrollY = 0;

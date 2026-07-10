@@ -1006,22 +1006,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-right: 6px;
   overflow: hidden;
   cursor: pointer;
-  background: var(--black);
+  background-color: var(--black);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   transition: transform 0.4s var(--ease-out);
 }
 .editorial__cell:hover { transform: scale(1.02); z-index: 1; }
 
 /* Alternating drop gives the strip its editorial rhythm */
-.editorial__cell:nth-child(even) { margin-top: 2rem; }
+.editorial__cell.is-dropped { margin-top: 2rem; }
 
-.editorial__cell--1 { background: url('images/product-1-front.jpeg') center top / cover no-repeat; }
-.editorial__cell--2 { background: url('images/hero-campaign.jpeg') center 20% / cover no-repeat; width: 460px; }
-.editorial__cell--3 { background: url('images/detail-label.jpeg') center center / cover no-repeat; width: 380px; }
-.editorial__cell--4 { background: url('images/product-2-front.jpeg') center top / cover no-repeat; }
-.editorial__cell--5 { background: url('images/product-1-back.jpeg') center top / cover no-repeat; width: 460px; }
-.editorial__cell--6 { background: url('images/product-3-front.jpeg') center top / cover no-repeat; }
-.editorial__cell--7 { background: url('images/abaya-autumn-detail.jpg') center 15% / cover no-repeat; width: 380px; }
-.editorial__cell--8 { background: url('images/rosalie-detail.jpg') center 60% / cover no-repeat; width: 380px; }
+/* Product name — revealed on hover, keeping the default look pure imagery */
+.editorial__cell-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 2rem 1rem 1.1rem;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--porcelain);
+  background: linear-gradient(to top, rgba(20, 8, 10, 0.78), transparent);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out);
+}
+.editorial__cell:hover .editorial__cell-name { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .editorial__track { animation: none; }
@@ -1655,8 +1669,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .editorial__marquee { margin: 0 -1.5rem; }
   .editorial__cell { height: 300px; width: 240px; }
-  .editorial__cell--2, .editorial__cell--5 { width: 360px; }
-  .editorial__cell--3, .editorial__cell--7, .editorial__cell--8 { width: 300px; }
 
   .footer__top {
     grid-template-columns: 1fr;
@@ -1676,9 +1688,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .pillars__inner { grid-template-columns: 1fr; gap: 2rem; }
 
   .editorial__cell { height: 240px; width: 190px; }
-  .editorial__cell--2, .editorial__cell--5 { width: 290px; }
-  .editorial__cell--3, .editorial__cell--7, .editorial__cell--8 { width: 240px; }
-  .editorial__cell:nth-child(even) { margin-top: 1.25rem; }
+  .editorial__cell.is-dropped { margin-top: 1.25rem; }
 
   .footer__nav { grid-template-columns: 1fr 1fr; }
 

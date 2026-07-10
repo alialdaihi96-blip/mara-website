@@ -1,7 +1,7 @@
 /* ─── MARA — Product Catalogue ──────────────────────────────────────────────
    Single source of truth for products. The collection grid (index.html) and
    the product page (product.html) both read from here, keyed by `id`.
-   Ordered by product code (MARA001 → MARA007).
+   Ordered by product code (MARA001 → MARA012).
 
    Sizing model:
    - Abayas: `lengths` (50–60, shoulder → hem) + `widths` (XS–XL),
@@ -206,10 +206,202 @@ const MARA_PRODUCTS = [
     customSize: true,
   },
   {
-    id: 'inner-dress',
+    id: 'aurelia-brown',
     code: 'MARA007',
-    name: 'The Inner Dress',
+    name: 'The Aurelia — Shades of Brown',
+    price: 'BHD 70.000',
+    category: 'abayas',
+    tagline: 'Ivory blossoms & warm autumn tones · Tailored collar',
+    images: [
+      'images/aurelia-brown-front.jpeg',
+      'images/aurelia-brown-front-2.jpeg',
+      'images/aurelia-brown-front-3.jpeg',
+    ],
+    description:
+      'A tailored-collar, open-front abaya in premium black crepe. Handcrafted ' +
+      'floral embroidery of ivory blossoms, threaded with warm autumn-toned ' +
+      'botanicals, cascades gracefully across the shoulder and down the front. ' +
+      'Long sleeves and a relaxed, flowing silhouette in a lightweight fabric ' +
+      'with a graceful drape. Matching sheila included.',
+    details: {
+      Code: 'MARA007',
+      Colour: 'Black',
+      Fabric: 'Premium Crepe',
+      Detail: 'Tailored collar · Open front',
+      Embroidery: 'Ivory blossoms & warm autumn-toned florals',
+      Includes: 'Matching sheila',
+      Care: 'Dry Clean Only',
+    },
+    lengths: MARA_LENGTHS,
+    widths: MARA_WIDTHS,
+    customSize: true,
+  },
+  {
+    id: 'aurelia',
+    code: 'MARA008',
+    name: 'The Aurelia',
+    price: 'BHD 70.000',
+    category: 'abayas',
+    tagline: 'Blush, mauve & deep plum florals · Contrast piping',
+    images: [
+      'images/aurelia-front.jpeg',
+      'images/aurelia-front-2.jpeg',
+      'images/aurelia-front-3.jpeg',
+      'images/aurelia-detail.jpeg',
+    ],
+    description:
+      'A tailored-collar, open-front abaya in premium black crepe. Handcrafted ' +
+      'floral embroidery in soft blush, mauve, ivory and deep plum cascades ' +
+      'symmetrically along both front panels. Long sleeves finished with fine ' +
+      'contrast piping, a relaxed, flowing silhouette, and a lightweight fabric ' +
+      'with a graceful drape. Matching sheila included.',
+    details: {
+      Code: 'MARA008',
+      Colour: 'Black',
+      Fabric: 'Premium Crepe',
+      Detail: 'Tailored collar · Contrast piping',
+      Embroidery: 'Blush · mauve · ivory · deep plum — both panels',
+      Includes: 'Matching sheila',
+      Care: 'Dry Clean Only',
+    },
+    lengths: MARA_LENGTHS,
+    widths: MARA_WIDTHS,
+    customSize: true,
+  },
+  {
+    id: 'rosee',
+    code: 'MARA009',
+    name: 'The Rosée',
+    price: 'BHD 80.000',
+    category: 'abayas',
+    tagline: 'Ivory & crimson roses · Front & back panels',
+    images: [
+      'images/rosee-front.jpeg',
+      'images/rosee-front-2.jpeg',
+      'images/rosee-front-3.jpeg',
+      'images/rosee-back.jpeg',
+      'images/rosee-back-2.jpeg',
+      'images/rosee-back-3.jpeg',
+    ],
+    description:
+      'An open-front abaya in premium black crepe with a hand-finished rose ' +
+      'garden — delicate ivory blossoms, soft blush and deep crimson roses ' +
+      'intertwined with rich green botanical vines — cascading gracefully across ' +
+      'the front and back panels. Tailored collar, long sleeves and a relaxed, ' +
+      'flowing silhouette with a graceful drape. Matching sheila included.',
+    details: {
+      Code: 'MARA009',
+      Colour: 'Black',
+      Fabric: 'Premium Crepe',
+      Detail: 'Tailored collar · Open front',
+      Embroidery: 'Ivory · blush · crimson roses & green vines — front & back',
+      Includes: 'Matching sheila',
+      Care: 'Dry Clean Only',
+    },
+    lengths: MARA_LENGTHS,
+    widths: MARA_WIDTHS,
+    customSize: true,
+  },
+  {
+    id: 'cascadia',
+    code: 'MARA010',
+    name: 'The Cascadia',
     price: 'BHD 50.000',
+    category: 'abayas',
+    tagline: 'Ivory & navy botanicals · Premium sky-blue linen',
+    images: [
+      'images/cascadia-front.jpeg',
+      'images/cascadia-front-2.jpeg',
+      'images/cascadia-front-3.jpeg',
+      'images/cascadia-detail.jpeg',
+      'images/cascadia-detail-2.jpeg',
+    ],
+    description:
+      'A tailored-collar, open-front abaya in premium sky-blue linen. Handcrafted ' +
+      'botanical embroidery in ivory and deep navy — delicate florals and leafy ' +
+      'vines — cascades gracefully from the shoulder across the front panel. ' +
+      'Long sleeves and a relaxed, flowing silhouette in a soft, breathable linen ' +
+      'with a graceful drape. Matching sheila included.',
+    details: {
+      Code: 'MARA010',
+      Colour: 'Sky Blue',
+      Fabric: 'Premium Linen',
+      Detail: 'Tailored collar · Open front',
+      Embroidery: 'Ivory & navy botanicals — shoulder to front',
+      Includes: 'Matching sheila',
+      Care: 'Dry Clean Only',
+    },
+    lengths: MARA_LENGTHS,
+    widths: MARA_WIDTHS,
+    customSize: true,
+  },
+  {
+    id: 'lignee',
+    code: 'MARA0010',
+    name: 'The Ligneè',
+    price: 'BHD 80.000',
+    category: 'abayas',
+    tagline: 'Silver geometric embroidery · Neckline to hem',
+    images: [
+      'images/lignee-front.jpeg',
+      'images/lignee-front-2.jpeg',
+      'images/lignee-detail.jpeg',
+    ],
+    description:
+      'An open-front abaya in premium black crepe with handcrafted geometric ' +
+      'embroidery in soft silver, inspired by timeless architectural motifs. ' +
+      'Elegant embroidered panels extend seamlessly from the neckline to the hem. ' +
+      'Long sleeves and a relaxed, flowing silhouette in a lightweight fabric ' +
+      'with a graceful drape. Matching sheila included.',
+    details: {
+      Code: 'MARA0010',
+      Colour: 'Black',
+      Fabric: 'Premium Crepe',
+      Detail: 'Open front',
+      Embroidery: 'Silver geometric — neckline to hem',
+      Includes: 'Matching sheila',
+      Care: 'Dry Clean Only',
+    },
+    lengths: MARA_LENGTHS,
+    widths: MARA_WIDTHS,
+    customSize: true,
+  },
+  {
+    id: 'stella',
+    code: 'MARA011',
+    name: 'Stella',
+    price: 'BHD 50.000',
+    category: 'abayas',
+    tagline: 'Oversized ivory blossoms · One shoulder & sleeve',
+    images: [
+      'images/stella-front.jpeg',
+      'images/stella-front-2.jpeg',
+      'images/stella-front-3.jpeg',
+    ],
+    description:
+      'An open-front abaya in premium black crepe with handcrafted floral ' +
+      'embroidery — oversized ivory blossoms with flowing botanical stems — ' +
+      'cascading gracefully across one shoulder and extending onto the sleeve. ' +
+      'Long sleeves and a relaxed, flowing silhouette in a lightweight fabric ' +
+      'with a graceful drape. Matching sheila included.',
+    details: {
+      Code: 'MARA011',
+      Colour: 'Black',
+      Fabric: 'Premium Crepe',
+      Detail: 'Open front',
+      Embroidery: 'Oversized ivory blossoms — one shoulder & sleeve',
+      Includes: 'Matching sheila',
+      Care: 'Dry Clean Only',
+    },
+    lengths: MARA_LENGTHS,
+    widths: MARA_WIDTHS,
+    customSize: true,
+  },
+  {
+    id: 'inner-dress',
+    code: 'MARA012',
+    name: 'The Inner Dress',
+    price: 'BHD 18.000',
     category: 'dress',
     tagline: 'Sleeveless maxi · Four colours',
     images: [
@@ -223,7 +415,7 @@ const MARA_PRODUCTS = [
       'beneath any MARA abaya or gracefully on its own. Available in navy blue, ' +
       'maroon, white and black.',
     details: {
-      Code: 'MARA007',
+      Code: 'MARA012',
       Colours: 'Navy Blue · Maroon · White · Black',
       Fabric: 'Premium Crepe',
       Cut: 'Sleeveless · Relaxed A-line',

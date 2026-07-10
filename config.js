@@ -5,9 +5,8 @@
 const MARA_CONFIG = {
   /* WhatsApp number for orders & enquiries.
      Full international format, digits only, no "+", spaces or dashes.
-     e.g. Saudi +966 50 000 0000  →  "966500000000"
-     ⚠️  REPLACE THE PLACEHOLDER BELOW WITH MARA'S REAL NUMBER. */
-  whatsappNumber: '966500000000',
+     MARA — Bahrain +973 3210 2996 */
+  whatsappNumber: '97332102996',
 
   /* Newsletter signup endpoint (Mailchimp / Formspree / etc.).
      Leave empty ('') to keep the graceful "Thank you" fallback with no backend. */

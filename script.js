@@ -78,6 +78,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ── Hero slideshow — cycle through all abayas every 5s ──────────────── */
+  const heroSlides = document.getElementById('heroSlides');
+  if (heroSlides && typeof MARA_PRODUCTS !== 'undefined') {
+    const heroImages = MARA_PRODUCTS
+      .filter(p => p.category === 'abayas' && p.images && p.images.length)
+      .map(p => p.images[0]);
+
+    if (heroImages.length) {
+      heroImages.forEach((src, i) => {
+        const slide = document.createElement('div');
+        // First slide starts active so the backdrop is never blank
+        slide.className = 'hero__slide' + (i === 0 ? ' is-active' : '');
+        slide.style.backgroundImage = `url('${src}')`;
+        heroSlides.appendChild(slide);
+      });
+
+      // Reveal the slideshow (fades the no-JS fallback backdrop out)
+      document.querySelector('.hero__backdrop')?.classList.add('has-slides');
+
+      // Preload so cross-fades are seamless
+      heroImages.forEach(src => { const im = new Image(); im.src = src; });
+
+      const slides = heroSlides.querySelectorAll('.hero__slide');
+      if (slides.length > 1) {
+        let current = 0;
+        setInterval(() => {
+          const next = (current + 1) % slides.length;
+          slides[next].classList.add('is-active');
+          slides[current].classList.remove('is-active');
+          current = next;
+        }, 3000);
+      }
+    }
+  }
+
+
   /* ── Scroll-aware nav ────────────────────────────────────────────────── */
   const nav = document.getElementById('nav');
   let lastScrollY = 0;

@@ -308,20 +308,52 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
 }
 
+/* Rotating collection slideshow — each abaya cross-fades in as the backdrop */
+.hero__slides {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 22%;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.6s ease-in-out, transform 6s ease-out;
+  will-change: opacity, transform;
+}
+
+.hero__slide.is-active {
+  opacity: 0.58;
+  transform: scale(1);
+}
+
+/* No-JS fallback backdrop (matches the first slide); fades out once the slideshow takes over */
 .hero__backdrop::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('images/hero-campaign.jpeg');
+  background-image: url('images/abaya-print-front.png');
   background-size: cover;
-  background-position: center 20%;
+  background-position: center 22%;
   opacity: 0.55;
-  transform: scale(1.04);
-  transition: transform 12s ease-out;
+  transition: opacity 1.2s ease;
 }
 
-.hero:hover .hero__backdrop::before {
-  transform: scale(1);
+.hero__backdrop.has-slides::before {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+  .hero__slide.is-active {
+    transform: none;
+  }
 }
 
 .hero__gradient {
